@@ -40,8 +40,8 @@ class BranchesTableSeeder extends Seeder
             'photo_url' => '',
         ]);
         Branch::create([
-            'code' => 'NEWSIM Ilo-ilo',
-            'name' => 'NEWSIM Bacolod',
+            'code' => 'ILO-ILO',
+            'name' => 'NEWSIM Ilo-ilo',
             'email' => 'iloilo@newsim.ph',
             'address' => '2F 402 Arguelles Bldg. E. Lopez St. Jaro, Iloilo City 5000',
             'telephone_no' => '(033)3203776',
@@ -49,8 +49,8 @@ class BranchesTableSeeder extends Seeder
             'photo_url' => '',
         ]);
         Branch::create([
-            'code' => 'NEWSIM Makati',
-            'name' => 'NEWSIM Bacolod',
+            'code' => 'MAKATI',
+            'name' => 'NEWSIM Makati',
             'email' => 'info@newsim.ph',
             'address' => '2323 NEWSIM Bldg. Marconi St. Brgy. San Isidro, Makati City 1234',
             'telephone_no' => '(02)8882764 or 664-8357',
