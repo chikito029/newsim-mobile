@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Branch;
 use App\Course;
 use App\Promo;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -35,5 +36,10 @@ class User extends Authenticatable
     public function promos()
     {
         return $this->hasMany(Promo::class, 'created_by');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'created_by');
     }
 }
