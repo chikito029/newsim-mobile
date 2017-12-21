@@ -1,36 +1,51 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+    <head>
+        <!-- META SECTION -->
+        <title>Login | NEWSIM App</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" id="theme" href="/css/theme-default.css"/>
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>
+
+        <div class="login-container login-v2">
+
+            <div class="login-box animated fadeInDown">
+                <div class="login-body">
+                    <div class="login-title"><strong>Welcome</strong>, Please login.</div>
+                    <form action="login" role="form" class="form-horizontal" method="POST">
                         {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-user"></span>
+                                    </div>
+                                    <input class="form-control" placeholder="Username" value="{{ old('username') }}" name="username" required autofocus/>
+                                </div>
+                                @if ($errors->has('username'))
+                                    <span class="help-block successful">
+                                        <strong class="text-danger">{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-lock"></span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Password" name="password"/>
+                                </div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -38,32 +53,25 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('password.request') }}">Forgot your password?</a>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                            <div class="col-md-12">
+                                <button class="btn btn-primary btn-lg btn-block">Login</button>
                             </div>
                         </div>
                     </form>
                 </div>
+                <div class="login-footer">
+                    <div class="pull-left">
+                        &copy; 2017 NEWSIMS
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
-</div>
-@endsection
+    </body>
+</html>
