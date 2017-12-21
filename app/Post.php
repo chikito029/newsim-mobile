@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Branch;
+use App\PostImage;
 
 class Post extends Model
 {
@@ -19,5 +20,10 @@ class Post extends Model
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function postImages()
+    {
+        return $this->hasMany(PostImage::class, 'post_id');
     }
 }
