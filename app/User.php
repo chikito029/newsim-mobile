@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Branch;
 use App\Course;
+use App\Promo;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,11 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsTo(Course::class, 'createdBy');
+        return $this->hasMany(Course::class, 'created_by');
+    }
+
+    public function promos()
+    {
+        return $this->hasMany(Promo::class, 'created_by');
     }
 }

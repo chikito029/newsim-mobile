@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchesTable extends Migration
+class CreatePromosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateBranchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('promos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
-            $table->string('name');
-            $table->string('email');
-            $table->string('address');
-            $table->string('telephone_no');
-            $table->text('facebook_url');
-            $table->text('photo_url');
+            $table->string('title');
+            $table->text('body');
+            $table->text('banner_url');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('branch_id');
+            $table->integer('created_by');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('promos');
     }
 }

@@ -20,7 +20,7 @@ class CreateOfficesTable extends Migration
             $table->string('address');
             $table->string('telephone_no');
             $table->string('location');
-            $table->string('photo_url');
+            $table->text('photo_url');
             $table->timestamps();
         });
     }
