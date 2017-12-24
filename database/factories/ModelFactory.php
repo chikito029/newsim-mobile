@@ -22,3 +22,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'branch_id' => $faker->randomElement([1, 2, 3, 4, 5]),
+        'created_by' => 1,
+    ];
+});
+
+$factory->define(App\PostImage::class, function (Faker\Generator $faker) {
+    return [
+        'url' => $faker->imageUrl($width = 640, $height = 480),
+        'width' => 640,
+        'height' => 480,
+    ];
+});

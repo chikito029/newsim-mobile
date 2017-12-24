@@ -29,7 +29,7 @@
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-bullhorn"></span> <span class="xn-text">News</span></a>
+                        <a href="{{ route('posts.index') }}"><span class="fa fa-bullhorn"></span> <span class="xn-text">News & Events</span></a>
                     </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-th-list"></span> <span class="xn-text">Courses</span></a>
