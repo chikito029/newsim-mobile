@@ -32,7 +32,7 @@
                         <a href="{{ route('posts.index') }}"><span class="fa fa-bullhorn"></span> <span class="xn-text">News & Events</span></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-th-list"></span> <span class="xn-text">Courses</span></a>
+                        <a href="{{ route('courses.index') }}"><span class="fa fa-th-list"></span> <span class="xn-text">Courses</span></a>
                     </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</span></a>

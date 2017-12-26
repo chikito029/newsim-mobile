@@ -10,3 +10,10 @@ Route::get('home', 'HomeController@index')->name('home');
 |--------------------------------------------------------------------------
 */
 Route::resource('posts', 'PostController', ['only' => ['index', 'store']]);
+
+/*
+|--------------------------------------------------------------------------
+| COURSES
+|--------------------------------------------------------------------------
+*/
+Route::resource('courses', 'CourseController', ['except' => ['create', 'show']]);
