@@ -22,7 +22,7 @@ class Promo extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function promoCourse()
+    public function promoCourses()
     {
         return $this->hasMany(PromoCourse::class, 'promo_id');
     }

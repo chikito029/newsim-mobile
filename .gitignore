@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/post-images
+/public/promo-images
 /storage/*.key
 /vendor
 /.idea

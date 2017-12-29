@@ -114,7 +114,7 @@
                         </div>
                         <div class="panel-footer">
                             Created on <strong>{{ $course->created_at->toDayDateTimeString() }}</strong> by <strong>{{ $course->createdBy->name }}</strong>
-                            <button class="btn btn-primary pull-right" type="submit">Update</button>
+                            <button class="btn btn-danger pull-right" type="submit">Update</button>
                         </div>
                     </form>
                 </div>

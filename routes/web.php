@@ -17,3 +17,10 @@ Route::resource('posts', 'PostController', ['only' => ['index', 'store']]);
 |--------------------------------------------------------------------------
 */
 Route::resource('courses', 'CourseController', ['except' => ['create', 'show']]);
+
+/*
+|--------------------------------------------------------------------------
+| COURSES
+|--------------------------------------------------------------------------
+*/
+Route::resource('promos', 'PromoController', ['except' => ['show']]);

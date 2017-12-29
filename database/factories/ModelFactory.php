@@ -39,3 +39,22 @@ $factory->define(App\PostImage::class, function (Faker\Generator $faker) {
         'height' => 480,
     ];
 });
+
+$factory->define(App\Promo::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'banner_url' => $faker->imageUrl($width = 640, $height = 480),
+        'start_date' => $faker->dateTime($max = 'now', $timezone = null),
+        'end_date' => $faker->dateTime($max = 'now', $timezone = null),
+        'branch_id' => $faker->randomElement([1, 2, 3, 4, 5]),
+        'created_by' => 1,
+    ];
+});
+
+$factory->define(App\PromoCourse::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 500, $max = 50000),
+    ];
+});

@@ -108,7 +108,7 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                            <button class="btn btn-danger pull-right" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -202,6 +202,7 @@
                   ]
             });
         });
+
         function delete_course(row) {
 
             var box = $("#mb-delete-course");

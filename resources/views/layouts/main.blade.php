@@ -38,7 +38,7 @@
                         <a href="#"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</span></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-tags"></span> <span class="xn-text">Promos</span></a>
+                        <a href="{{ route('promos.index') }}"><span class="fa fa-tags"></span> <span class="xn-text">Promos</span></a>
                     </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Circulars</span></a>
