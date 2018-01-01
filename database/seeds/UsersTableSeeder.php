@@ -19,5 +19,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Daniel Bajana',
             'branch_id' => 1,
         ]);
+
+        factory(User::class, 25)->create();
     }
 }

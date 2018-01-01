@@ -43,6 +43,9 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Circulars</span></a>
                     </li>
+                    <li class="xn-openable">
+                        <a href="{{ route('users.index') }}"><span class="fa fa-users"></span> <span class="xn-text">User Management</span></a>
+                    </li>
 
                     <!-- POWER OFF -->
                     <li class="xn-icon-button pull-right last">

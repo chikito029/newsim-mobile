@@ -31,3 +31,10 @@ Route::resource('promos', 'PromoController', ['except' => ['show']]);
 |--------------------------------------------------------------------------
 */
 Route::resource('schedules', 'ScheduleController', ['except' => ['show', 'create']]);
+
+/*
+|--------------------------------------------------------------------------
+| USER MANAGEMENT
+|--------------------------------------------------------------------------
+*/
+Route::resource('users', 'UserController', ['except' => ['show']]);
