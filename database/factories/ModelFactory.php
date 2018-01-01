@@ -58,3 +58,21 @@ $factory->define(App\PromoCourse::class, function (Faker\Generator $faker) {
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 500, $max = 50000),
     ];
 });
+
+$factory->define(App\Schedule::class, function (Faker\Generator $faker) {
+
+    $courses = App\Course::all();
+
+    $randomDate = $faker->dateTimeThisYear($max = 'now', $timezone = null)->format('Y-m-d');
+    $endDate = \Carbon\Carbon::createFromFormat('Y-m-d', $randomDate)->addDay(rand(0, 5))->format('Y-m-d');
+
+    return [
+        'course_name' => $courses[rand(1, $courses->count())]->code,
+        'start_date' => $randomDate,
+        'end_date' => $endDate,
+        'start_time' => $faker->time($format = 'H:i:s', $max = 'now'),
+        'end_time' => $faker->time($format = 'H:i:s', $max = 'now'),
+        'branch_id' => $faker->randomElement([1,2,3,4,5]),
+        'created_by' => 1,
+    ];
+});

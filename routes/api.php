@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Schedule;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,20 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('schedules/calendar', function () {
+    $schedules =  Schedule::all();
+
+    $calendar = $schedules->map(function ($schedule, $key) {
+        return [
+            'id' => $schedule->id,
+            'title' => $schedule->course_name,
+            'start' => $schedule->start_date,
+            'end' => $schedule->end_date,
+            'className' => 'red',
+        ];
+    });
+
+    return $calendar;
 });

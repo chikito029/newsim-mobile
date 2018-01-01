@@ -24,3 +24,10 @@ Route::resource('courses', 'CourseController', ['except' => ['create', 'show']])
 |--------------------------------------------------------------------------
 */
 Route::resource('promos', 'PromoController', ['except' => ['show']]);
+
+/*
+|--------------------------------------------------------------------------
+| SCHEDULES
+|--------------------------------------------------------------------------
+*/
+Route::resource('schedules', 'ScheduleController', ['except' => ['show', 'create']]);

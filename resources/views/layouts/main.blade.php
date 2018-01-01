@@ -35,7 +35,7 @@
                         <a href="{{ route('courses.index') }}"><span class="fa fa-th-list"></span> <span class="xn-text">Courses</span></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</span></a>
+                        <a href="{{ route('schedules.index') }}"><span class="fa fa-calendar"></span> <span class="xn-text">Schedules</span></a>
                     </li>
                     <li class="xn-openable">
                         <a href="{{ route('promos.index') }}"><span class="fa fa-tags"></span> <span class="xn-text">Promos</span></a>
