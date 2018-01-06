@@ -143,6 +143,7 @@
                                     <tr>
                                         <th>Code</th>
                                         <th>Description</th>
+                                        <th>Accredited By</th>
                                         <th>Category</th>
                                         <th style="text-align: center">Duration</th>
                                         <th>Branch</th>
@@ -154,10 +155,11 @@
                                         <tr>
                                             <td>{{ $course->code }}</td>
                                             <td>{{ $course->description }}</td>
+                                            <td>{{ $course->accredited_by }}</td>
                                             <td>{{ $course->category }}</td>
                                             <td align="center">{{ $course->duration }}</td>
                                             <td>{{ $course->branch->name }}</td>
-                                            <td align="center">
+                                            <td align="center" width="100">
                                                 <a class="btn btn-primary btn-rounded btn-condensed btn-sm" href="{{ route('courses.edit', $course->id) }}"><span class="fa fa-pencil"></span></a>
                                                 <button class="btn btn-danger btn-rounded btn-condensed btn-sm" onclick="delete_course({{ $course->id }});"><span class="fa fa-times"></span>
                                             </td>
