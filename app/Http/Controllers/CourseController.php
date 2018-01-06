@@ -37,7 +37,7 @@ class CourseController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'category' => $request->category,
-            'category' => $request->accredited_by,
+            'accredited_by' => $request->accredited_by,
             'branch_id' => $request->branch_id,
             'created_by' => auth()->user()->id,
         ]);
