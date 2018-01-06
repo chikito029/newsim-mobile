@@ -109,6 +109,21 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="col-md-12"><hr></div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Accredited By</label>
+                                            <div class="col-md-6">
+                                                <select class="form-control select" name="accredited_by">
+                                                    <option value="marina"  @if (old('accredited_by') == 'marina') selected @elseif ($course->accredited_by == 'marina') selected @endif>Marina</option>
+                                                    <option value="opito"  @if (old('accredited_by') == 'opito') selected @elseif ($course->accredited_by == 'opito') selected @endif>Opito</option>
+                                                </select>
+                                                <span class="help-block">Select Accreditation Body</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
