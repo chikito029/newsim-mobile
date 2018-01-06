@@ -218,6 +218,17 @@ class CoursesTableSeeder extends Seeder
             ['code' => 'MARPOL 1 TO 6','description' => 'Marine Pollution and Prevention (73/78 Annexes 1 to 6)','category' => 'Common','duration' => '5','branch_id' => '4','created_by' => '1'],
             ['code' => 'MEFA','description' => 'Medical Emergency First Aid','category' => 'Common','duration' => '4','branch_id' => '4','created_by' => '1'],
             ['code' => 'SSO','description' => 'Ship Security Officer Course','category' => 'Common','duration' => '3','branch_id' => '4','created_by' => '1'],
+            ['code' => 'BOSIET','description' => 'Basic Offshore Safety Induction and Emergency Training','category' => 'Off-Shore','duration' => '3','branch_id' => '4','created_by' => '1'],
+            ['code' => 'HUET','description' => 'Helicopter Underwater Escape Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'FOET','description' => 'Further Offshore Emergency Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'T-HUET','description' => 'Tropical Helicopter Underwater Escape Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'T-FOET','description' => 'Tropical Further Offshore Emergency Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'BRIDGING','description' => 'Bridging Elements Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'EBS TBOSIET-THUET','description' => 'Emergency Breathing System (delivered in conjunction with T-BOSIET/T-HUET)','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'EBS TFOET','description' => 'Emergency Breathing System (delivered in conjunction with T-FOET)','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'ECT-IT','description' => 'Escape Chute Training Initial Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'ECT REF','description' => 'Escape Chute Training Refresher Training','category' => 'Off-Shore','duration' => '1','branch_id' => '4','created_by' => '1'],
+            ['code' => 'MLCD-F1','description' => 'Function 1: Navigation at the Management Level','category' => 'Off-Shore','duration' => '30','branch_id' => '4','created_by' => '1'],
         ];
 
         foreach ($courses as $key => $course) {
