@@ -28,6 +28,7 @@ class CourseController extends Controller
             'description' => 'required|max:191',
             'duration' => 'required|min:1',
             'category' => 'required',
+            'accredited_by' => 'required',
             'branch_id' => 'required',
         ]);
 
@@ -36,6 +37,7 @@ class CourseController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'category' => $request->category,
+            'category' => $request->accredited_by,
             'branch_id' => $request->branch_id,
             'created_by' => auth()->user()->id,
         ]);
@@ -57,6 +59,7 @@ class CourseController extends Controller
             'description' => 'required|max:191',
             'duration' => 'required|min:1',
             'category' => 'required',
+            'accredited_by' => 'required',
             'branch_id' => 'required',
         ]);
 
@@ -65,6 +68,7 @@ class CourseController extends Controller
             'description' => $request->description,
             'duration' => $request->duration,
             'category' => $request->category,
+            'accredited_by' => $request->accredited_by,
             'branch_id' => $request->branch_id,
         ]);
 
