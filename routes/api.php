@@ -34,6 +34,25 @@ Route::get('schedules/calendar', function () {
     return $calendar;
 });
 
+Route::get('branches', function() {
+    $branches = \App\Branch::all();
+    $branchesJson = [];
+
+    foreach ($branches as $branch) {
+        $tempArray = [];
+        $tempArray["id"] = $branch->id;
+        $tempArray["code"] = $branch->code;
+        $tempArray["name"] = $branch->name;
+        $tempArray["email"] = $branch->email;
+        $tempArray["address"] = $branch->address;
+        $tempArray["telephone_no"] = $branch->telephone_no;
+        $tempArray["facebook_url"] = $branch->facebook_url;
+        $tempArray["photo_url"] = $branch->photo_url;
+        $branchesJson[] = $tempArray;
+    }
+    return $branchesJson;
+});
+
 Route::get('courses', function() {
     $courses = \App\Course::with('branch')->get();
     $coursesWithBranch = [];
