@@ -103,8 +103,23 @@
                                             <span class="help-block">Select branch</span>
                                         </div>
                                     </div>
-
                                 </div>
+
+                                <div class="col-md-12"><hr></div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Accredited By</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control select" name="accredited_by">
+                                                <option value="marina">Marina</option>
+                                                <option value="opito">Opito</option>
+                                            </select>
+                                            <span class="help-block">Select Accreditation Body</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="panel-footer">
