@@ -56,6 +56,7 @@ Route::get('courses', function() {
        $tempArray["code"] = $course->code;
        $tempArray["description"] = $course->description;
        $tempArray["category"] = $course->category;
+       $tempArray["accredited_by"] = $course->accredited_by;
        $tempArray["duration"] = $course->duration;
        $coursesWithBranch[] = $tempArray;
    }
