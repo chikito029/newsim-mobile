@@ -18,6 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('code');
             $table->string('description');
             $table->string('category');
+            $table->string('accredited_by');
             $table->integer('duration');
             $table->integer('branch_id');
             $table->integer('created_by');
