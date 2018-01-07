@@ -98,3 +98,7 @@ Route::get('promos', function() {
 
     return $promosWithBranch;
 });
+
+Route::get('promo-courses', function() {
+    return customize_single_level_collection(\App\PromoCourse::all(), 'created_at', 'updated_at');
+});
