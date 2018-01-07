@@ -79,3 +79,22 @@ Route::get('posts', function() {
 Route::get('post-images', function() {
     return customize_single_level_collection(\App\PostImage::all(), 'created_at', 'updated_at');
 });
+
+Route::get('promos', function() {
+    $promos = \App\Promo::with('branch')->orderBy('created_at', 'desc')->get();
+    $promosWithBranch = [];
+
+    foreach ($promos as $promo) {
+        $tempArray = [];
+        $tempArray["id"] = $promo->id;
+        $tempArray["title"] = $promo->title;
+        $tempArray["body"] = $promo->body;
+        $tempArray["banner_url"] = $promo->banner_url;
+        $tempArray["start_date"] = $promo->start_date;
+        $tempArray["end_date"] = $promo->end_date;
+        $tempArray["branch"] = $promo->branch->name;
+        $promosWithBranch[] = $tempArray;
+    }
+
+    return $promosWithBranch;
+});
