@@ -63,3 +63,7 @@ Route::get('courses', function() {
 
    return $coursesWithBranch;
 });
+
+Route::get('offices', function() {
+    return customize_single_level_collection(\App\Office::all(), 'created_at', 'updated_at');
+});
