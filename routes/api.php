@@ -71,3 +71,7 @@ Route::get('offices', function() {
 Route::get('schedules', function() {
     return customize_single_level_collection(\App\Schedule::all(), 'created_at', 'updated_at');
 });
+
+Route::get('posts', function() {
+    return customize_single_level_collection(\App\Post::all(), 'created_at', 'updated_at');
+});
