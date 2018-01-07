@@ -75,3 +75,7 @@ Route::get('schedules', function() {
 Route::get('posts', function() {
     return customize_single_level_collection(\App\Post::all(), 'created_at', 'updated_at');
 });
+
+Route::get('post-images', function() {
+    return customize_single_level_collection(\App\PostImage::all(), 'created_at', 'updated_at');
+});
