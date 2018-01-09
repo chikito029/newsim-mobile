@@ -70,7 +70,22 @@ Route::get('offices', function() {
 });
 
 Route::get('schedules', function() {
-    return customize_single_level_collection(\App\Schedule::all(), 'created_at', 'updated_at');
+    $schedules = Schedule::with('branch')->get();
+    $schedulesWithBranch = [];
+
+    foreach ($schedules as $schedule) {
+        $tempArray = [];
+        $tempArray['id'] = $schedule->id;
+        $tempArray['course_name'] = $schedule->course_name;
+        $tempArray['start_date'] = $schedule->start_date;
+        $tempArray['end_date'] = $schedule->end_date;
+        $tempArray['start_time'] = $schedule->start_time;
+        $tempArray['end_time'] = $schedule->end_time;
+        $tempArray['branch_name'] = $schedule->branch->name;
+        $schedulesWithBranch[] = $tempArray;
+    }
+
+    return $schedulesWithBranch;
 });
 
 Route::get('posts', function() {
