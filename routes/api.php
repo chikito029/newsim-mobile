@@ -89,7 +89,19 @@ Route::get('schedules', function() {
 });
 
 Route::get('posts', function() {
-    return customize_single_level_collection(\App\Post::all(), 'created_at', 'updated_at');
+    $posts = \App\Post::with('branch')->get();
+    $postsWithBranch = [];
+
+    foreach ($posts as $post) {
+        $tempArray = [];
+        $tempArray['id'] = $post->id;
+        $tempArray['title'] = $post->title;
+        $tempArray['body'] = $post->body;
+        $tempArray['branch_name'] = $post->branch->name;
+        $postsWithBranch[] = $tempArray;
+    }
+
+    return $postsWithBranch;
 });
 
 Route::get('post-images', function() {
