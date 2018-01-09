@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Schedule;
 
 /*
@@ -101,4 +102,59 @@ Route::get('promos', function() {
 
 Route::get('promo-courses', function() {
     return customize_single_level_collection(\App\PromoCourse::all(), 'created_at', 'updated_at');
+});
+
+Route::get('exchange-rates', function () {
+    $client = new Client([
+        // Base URI is used with relative requests
+        'base_uri' => 'https://api.fixer.io/',
+        // You can set any number of default request options.
+        'timeout'  => 5.0,
+    ]);
+
+    $exchange = $client->request('GET', 'latest?base=PHP');
+
+    $exchange = json_decode($exchange->getBody());
+
+    $countryCodes = [
+        ['code' => 'AUD', 'name' => 'Australian Dollar'],
+        ['code' => 'BGN', 'name' => 'Bulgarian Lev'],
+        ['code' => 'BRL', 'name' => 'Brazilian Real'],
+        ['code' => 'CAD', 'name' => 'Canadian Dollar'],
+        ['code' => 'CHF', 'name' => 'Swiss Franc'],
+        ['code' => 'CNY', 'name' => 'Chinese Yuan'],
+        ['code' => 'CZK', 'name' => 'Czech Koruna'],
+        ['code' => 'DKK', 'name' => 'Danish Krone'],
+        ['code' => 'EUR', 'name' => 'Euro'],
+        ['code' => 'GBP', 'name' => 'British Pound'],
+        ['code' => 'HKD', 'name' => 'Hong Kong Dollars'],
+        ['code' => 'HRK', 'name' => 'Croatian Kuna'],
+        ['code' => 'HUF', 'name' => 'Hungarian Forint'],
+        ['code' => 'IDR', 'name' => 'Indonesian Rupiah'],
+        ['code' => 'ILS', 'name' => 'Israeli New Shekel'],
+        ['code' => 'INR', 'name' => 'Indian Rupee'],
+        ['code' => 'JPY', 'name' => 'Japanese Yen'],
+        ['code' => 'KRW', 'name' => 'South Korean Won'],
+        ['code' => 'MXN', 'name' => 'Mexican Peso'],
+        ['code' => 'MYR', 'name' => 'Malaysian Ringgit'],
+        ['code' => 'NOK', 'name' => 'Norwegian Krone'],
+        ['code' => 'NZD', 'name' => 'New Zealand Dollar'],
+        ['code' => 'PLN', 'name' => 'Polish Zloty'],
+        ['code' => 'RON', 'name' => 'Romanian Leu'],
+        ['code' => 'RUB', 'name' => 'Russian Ruble'],
+        ['code' => 'SEK', 'name' => 'Swedish Krona'],
+        ['code' => 'SGD', 'name' => 'Singapore Dollar'],
+        ['code' => 'THB', 'name' => 'Thai Baht'],
+        ['code' => 'TRY', 'name' => 'Turkish Lira'],
+        ['code' => 'USD', 'name' => 'US Dollar'],
+        ['code' => 'ZAR', 'name' => 'South African Rand']
+    ];
+
+    foreach($exchange->rates as $rate) {
+        foreach($countryCodes as &$country) {
+            $country['rate'] = $rate;
+        }
+    }
+
+    return $countryCodes;
 });
