@@ -57,8 +57,14 @@ Route::get('courses', function() {
        $tempArray["code"] = $course->code;
        $tempArray["description"] = $course->description;
        $tempArray["category"] = $course->category;
+       $tempArray["aims"] = $course->aims;
+       $tempArray["objectives_header"] = $course->objectives_header;
+       $tempArray["objectives"] = $course->objectives;
+       $tempArray["target_audience"] = $course->target_audience;
+       $tempArray["delegate_prerequisites"] = $course->delegate_prerequisites;
        $tempArray["accredited_by"] = $course->accredited_by;
        $tempArray["duration"] = $course->duration;
+       $tempArray["validity"] = $course->validity;
        $coursesWithBranch[] = $tempArray;
    }
 
