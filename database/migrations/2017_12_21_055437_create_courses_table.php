@@ -19,7 +19,13 @@ class CreateCoursesTable extends Migration
             $table->string('description');
             $table->string('category');
             $table->string('accredited_by');
+            $table->longText('aims')->nullable();
+            $table->string('objectives_header')->nullable();
+            $table->longText('objectives')->nullable();
+            $table->longText('target_audience')->nullable();
+            $table->string('delegate_prerequisite')->nullable();
             $table->integer('duration');
+            $table->integer('validity');
             $table->integer('branch_id');
             $table->integer('created_by');
             $table->timestamps();
