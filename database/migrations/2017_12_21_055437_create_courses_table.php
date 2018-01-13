@@ -23,7 +23,7 @@ class CreateCoursesTable extends Migration
             $table->string('objectives_header')->nullable();
             $table->longText('objectives')->nullable();
             $table->longText('target_audience')->nullable();
-            $table->string('delegate_prerequisite')->nullable();
+            $table->string('delegate_prerequisites')->nullable();
             $table->integer('duration');
             $table->integer('validity')->nullable();
             $table->integer('branch_id');
