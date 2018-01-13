@@ -25,7 +25,7 @@ class CreateCoursesTable extends Migration
             $table->longText('target_audience')->nullable();
             $table->string('delegate_prerequisite')->nullable();
             $table->integer('duration');
-            $table->integer('validity');
+            $table->integer('validity')->nullable();
             $table->integer('branch_id');
             $table->integer('created_by');
             $table->timestamps();
