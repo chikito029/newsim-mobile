@@ -53,7 +53,6 @@ Route::get('courses', function() {
        $tempArray["branch_telephone_no"] = $course->branch->telephone_no;
        $tempArray["branch_address"] = $course->branch->address;
        $tempArray["branch_facebook_url"] = $course->branch->facebook_url;
-       $tempArray["letter"] = strtolower( substr($course->code, 0, 1));
        $tempArray["code"] = $course->code;
        $tempArray["description"] = $course->description;
        $tempArray["category"] = $course->category;
