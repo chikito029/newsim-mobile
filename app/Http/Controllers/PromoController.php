@@ -74,7 +74,10 @@ class PromoController extends Controller
             'title' => 'required|max:191',
             'body' => 'required',
         ]);
-
+        
+        // Save old banner_url reference in case it needs to be deleted
+        $oldBannerUrl = $promo->banner_url;
+        
         $promo->update([
             'title' => $request->title,
             'body' => $request->body,
@@ -89,6 +92,9 @@ class PromoController extends Controller
             $editor->open($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
             $editor->resizeExactHeight($image, 400);
             $editor->save($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
+
+            // Banner has been changed so delete old reference to free up space
+            unlink(public_path() .'\\'. str_replace('/', '\\', $oldBannerUrl));
         }
 
         // We will delete all promoCourse related the current promo
