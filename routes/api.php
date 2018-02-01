@@ -103,6 +103,7 @@ Route::get('posts', function() {
         $tempArray['title'] = $post->title;
         $tempArray['body'] = $post->body;
         $tempArray['branch_name'] = $post->branch->name;
+        $tempArray['created_at'] = $post->created_at->timestamp;
         $postsWithBranch[] = $tempArray;
     }
 
