@@ -17,7 +17,7 @@ class CreatePromosTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->text('banner_url');
+            $table->text('banner_url')->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('branch_id');
