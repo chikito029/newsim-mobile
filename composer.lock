@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa3621aec68b83b99cccc3d217271b12",
+    "content-hash": "c27a0f77cf119cc2d451d83dce053c8c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -418,6 +418,47 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "kosinix/grafika",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kosinix/grafika.git",
+                "reference": "211f61fc334b8b36616b23e8af7c5727971d96ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kosinix/grafika/zipball/211f61fc334b8b36616b23e8af7c5727971d96ee",
+                "reference": "211f61fc334b8b36616b23e8af7c5727971d96ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grafika\\": "src/Grafika"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Nico Amarilla",
+                    "homepage": "https://www.kosinix.com"
+                }
+            ],
+            "description": "An image manipulation library for PHP.",
+            "homepage": "http://kosinix.github.io/grafika",
+            "keywords": [
+                "grafika"
+            ],
+            "time": "2017-06-20T03:13:49+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3728,7 +3769,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kosinix/grafika": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
