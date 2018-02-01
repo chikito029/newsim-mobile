@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Schedule;
@@ -26,8 +27,8 @@ Route::get('schedules/calendar', function () {
         return [
             'id' => $schedule->id,
             'title' => $schedule->course_name,
-            'start' => $schedule->start_date,
-            'end' => $schedule->end_date,
+            'start' => Carbon::parse($schedule->start_date)->timestamp,
+            'end' => Carbon::parse($schedule->end_date)->timestamp,
             'className' => 'red',
         ];
     });
@@ -82,10 +83,10 @@ Route::get('schedules', function() {
         $tempArray = [];
         $tempArray['id'] = $schedule->id;
         $tempArray['course_name'] = $schedule->course_name;
-        $tempArray['start_date'] = $schedule->start_date;
-        $tempArray['end_date'] = $schedule->end_date;
-        $tempArray['start_time'] = $schedule->start_time;
-        $tempArray['end_time'] = $schedule->end_time;
+        $tempArray['start_date'] = Carbon::parse($schedule->start_date)->timestamp;
+        $tempArray['end_date'] = Carbon::parse($schedule->end_date)->timestamp;
+        $tempArray['start_time'] = Carbon::parse($schedule->start_time)->timestamp;
+        $tempArray['end_time'] = Carbon::parse($schedule->end_time)->timestamp;
         $tempArray['branch_name'] = $schedule->branch->name;
         $schedulesWithBranch[] = $tempArray;
     }
@@ -125,8 +126,8 @@ Route::get('promos', function() {
         $tempArray["title"] = $promo->title;
         $tempArray["body"] = $promo->body;
         $tempArray["banner_url"] = $promo->banner_url;
-        $tempArray["start_date"] = $promo->start_date;
-        $tempArray["end_date"] = $promo->end_date;
+        $tempArray["start_date"] = Carbon::parse($promo->start_date)->timestamp;
+        $tempArray["end_date"] = Carbon::parse($promo->end_date)->timestamp;
         $tempArray["branch"] = $promo->branch->name;
         $promosWithBranch[] = $tempArray;
     }
