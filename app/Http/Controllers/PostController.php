@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\PostImage;
+use Grafika\Grafika;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -37,14 +38,18 @@ class PostController extends Controller
             $fileImages = $request->file('post_images');
             foreach ($fileImages as $key => $fileImage) {
 
-                $imageSize = getimagesize($fileImage);
-
                 // Persist the PostImage model.
-                $post->postImages()->create([
-                    'url' => $fileImage->store('post-images', 'public'),
-                    'width' => $imageSize[0],
-                    'height' => $imageSize[1],
+                $postImage = $post->postImages()->create([
+                    'url' => $fileImage->store('post-images', 'public')
                 ]);
+
+                // if the image is > 100kb or its height is > 400, resize it
+                if ($fileImage->getClientSize() > 100000 || getimagesize($fileImage)[1] > 400) {
+                    $editor = Grafika::createEditor();
+                    $editor->open($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url));
+                    $editor->resizeExactHeight($fileImage, 400);
+                    $editor->save($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url));
+                }
             }
         }
 

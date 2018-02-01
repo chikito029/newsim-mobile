@@ -35,9 +35,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 
 $factory->define(App\PostImage::class, function (Faker\Generator $faker) {
     return [
-        'url' => $faker->imageUrl($width = 640, $height = 480),
-        'width' => 640,
-        'height' => 480,
+        'url' => $faker->imageUrl($width = 640, $height = 480)
     ];
 });
 
