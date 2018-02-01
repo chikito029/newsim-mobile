@@ -94,8 +94,18 @@ Route::get('schedules', function() {
     return $schedulesWithBranch;
 });
 
-Route::get('posts', function() {
-    $posts = \App\Post::with('branch', 'postImages')->get();
+Route::get('posts', function(Request $request) {
+
+    $lastItemId = $request->last_item_id;
+    $postType = $request->post_type;
+    $posts = null;
+
+    if ($postType == "new") {
+        $posts = \App\Post::with('branch', 'postImages')->where('id' , '>', $lastItemId)->take(5)->get();
+    } elseif ($postType == "old") {
+        $posts = \App\Post::with('branch', 'postImages')->where('id' , '<', $lastItemId)->orderBy('id', 'desc')->take(5)->get();
+    }
+
     $postsWithBranch = [];
 
     foreach ($posts as $post) {
