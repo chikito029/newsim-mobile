@@ -94,7 +94,7 @@ Route::get('schedules', function() {
 });
 
 Route::get('posts', function() {
-    $posts = \App\Post::with('branch')->get();
+    $posts = \App\Post::with('branch', 'postImages')->get();
     $postsWithBranch = [];
 
     foreach ($posts as $post) {
@@ -103,6 +103,7 @@ Route::get('posts', function() {
         $tempArray['title'] = $post->title;
         $tempArray['body'] = $post->body;
         $tempArray['branch_name'] = $post->branch->name;
+        $tempArray['post_cover_url'] = count($post->postImages) < 1 ? null : $post->postImages->first()->url;
         $tempArray['created_at'] = $post->created_at->timestamp;
         $postsWithBranch[] = $tempArray;
     }
