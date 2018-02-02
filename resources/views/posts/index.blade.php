@@ -125,7 +125,7 @@
 
                     <!-- START TIMELINE ITEM -->
                     <div class="timeline-item timeline-main">
-                        <div class="timeline-date">{{ $posts->first()->created_at->year }}</div>
+                        <div class="timeline-date">{{ $posts ? '' : $posts->first()->created_at->year }}</div>
                     </div>
                     <!-- END TIMELINE ITEM -->
 
