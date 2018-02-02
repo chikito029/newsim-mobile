@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Schedule;
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,7 +124,16 @@ Route::get('posts', function(Request $request) {
 });
 
 Route::get('post-images', function() {
-    return customize_single_level_collection(\App\PostImage::all(), 'created_at', 'updated_at');
+    $postImagesRaw = \App\PostImage::all();
+
+    $postImages = [];
+
+    // encode image to base64 for easy database manipulation
+    foreach ($postImagesRaw as $postImage) {
+        $postImages[] = ['post_id' => $postImage->post_id, 'base64_image' => base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $postImage->url)))];
+    }
+
+    return $postImages;
 });
 
 Route::get('promos', function() {
