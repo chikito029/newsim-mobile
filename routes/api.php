@@ -115,7 +115,7 @@ Route::get('posts', function(Request $request) {
         $tempArray['title'] = $post->title;
         $tempArray['body'] = $post->body;
         $tempArray['branch_name'] = $post->branch->name;
-        $tempArray['post_cover_url'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url)));
+        $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url)));
         $tempArray['created_at'] = $post->created_at->timestamp;
         $postsWithBranch[] = $tempArray;
     }
