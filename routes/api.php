@@ -148,7 +148,7 @@ Route::get('promos', function() {
             $tempArray["id"] = $promo->id;
             $tempArray["title"] = $promo->title;
             $tempArray["body"] = $promo->body;
-            $tempArray["banner_url"] = $promo->banner_url;
+            $tempArray["banner_url"] = public_path() .'\\'. str_replace('/', '\\', $promo->banner_url);
             $tempArray["start_date"] = Carbon::parse($promo->start_date)->timestamp;
             $tempArray["end_date"] = Carbon::parse($promo->end_date)->timestamp;
             $tempArray["branch"] = $promo->branch->name;
