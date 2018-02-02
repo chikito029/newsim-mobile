@@ -3,6 +3,7 @@
 /public/storage
 /public/post-images
 /public/promo-images
+/public/offices-cover
 /storage/*.key
 /vendor
 /.idea
