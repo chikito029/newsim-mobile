@@ -73,7 +73,21 @@ Route::get('courses', function() {
 });
 
 Route::get('offices', function() {
-    return customize_single_level_collection(\App\Office::all(), 'created_at', 'updated_at');
+    $officesRaw = \App\Office::all();
+    $offices = [];
+
+    foreach($officesRaw as $office) {
+        $tempArray = [];
+        $tempArray['name'] = $office->name;
+        $tempArray['email'] = $office->email;
+        $tempArray['address'] = $office->address;
+        $tempArray['telephone_no'] = $office->telephone_no;
+        $tempArray['location'] = $office->location;
+        $tempArray['photo_base64_image'] = base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $office->photo_url)));
+        $offices[] = $tempArray;
+    }
+
+    return $offices;
 });
 
 Route::get('schedules', function() {
