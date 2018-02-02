@@ -46,9 +46,11 @@ class PostController extends Controller
                 // if the image is > 100kb or its height is > 400, resize it
                 if ($fileImage->getClientSize() > 100000 || getimagesize($fileImage)[1] > 400) {
                     $editor = Grafika::createEditor();
-                    $editor->open($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url));
+//                    $editor->open($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url)); // used for windows
+                    $editor->open($fileImage, public_path() .'/'. str_replace('\\', '/', $postImage->url)); // used for mac
                     $editor->resizeExactHeight($fileImage, 400);
-                    $editor->save($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url));
+//                    $editor->save($fileImage, public_path() .'\\'. str_replace('/', '\\', $postImage->url)); //used for windows
+                    $editor->save($fileImage, public_path() .'/'. str_replace('\\', '/', $postImage->url)); // used for mac
                 }
             }
         }

@@ -47,9 +47,11 @@ class PromoController extends Controller
         // if there is image and its > 100kb or its height is > 400, resize it
         if ($promo->banner_url && ($request->file('promo_banner')->getClientSize() > 100000 || getimagesize($request->file('promo_banner'))[1] > 400)) {
             $editor = Grafika::createEditor();
-            $editor->open($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
+//            $editor->open($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url)); // used for windows
+            $editor->open($image, public_path() .'/'. str_replace('\\', '/', $promo->banner_url)); // used for mac
             $editor->resizeExactHeight($image, 400);
-            $editor->save($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
+//            $editor->save($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url)); // used for windows
+            $editor->save($image, public_path() .'/'. str_replace('\\', '/', $promo->banner_url)); // used for mac
         }
 
         foreach ($request->course_names as $key => $courseName) {
@@ -89,12 +91,15 @@ class PromoController extends Controller
         // if image is new and its > 100kb or its height is > 400, resize it
         if ($request->hasFile('promo_banner') && ($request->file('promo_banner')->getClientSize() > 100000 || getimagesize($request->file('promo_banner'))[1] > 400)) {
             $editor = Grafika::createEditor();
-            $editor->open($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
+//            $editor->open($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url)); // used for windows
+            $editor->open($image, public_path() .'/'. str_replace('\\', '/', $promo->banner_url)); // used for mac
             $editor->resizeExactHeight($image, 400);
-            $editor->save($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url));
+//            $editor->save($image, public_path() .'\\'. str_replace('/', '\\', $promo->banner_url)); // used for windows
+            $editor->save($image, public_path() .'/'. str_replace('\\', '/', $promo->banner_url)); // used for mac
 
             // Banner has been changed so delete old reference to free up space
-            unlink(public_path() .'\\'. str_replace('/', '\\', $oldBannerUrl));
+//            unlink(public_path() .'\\'. str_replace('/', '\\', $oldBannerUrl)); //used for windows
+            unlink(public_path() .'/'. str_replace('\\', '/', $oldBannerUrl)); //used for mac
         }
 
         // We will delete all promoCourse related the current promo

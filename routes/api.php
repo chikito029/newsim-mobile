@@ -83,7 +83,8 @@ Route::get('offices', function() {
         $tempArray['address'] = $office->address;
         $tempArray['telephone_no'] = $office->telephone_no;
         $tempArray['location'] = $office->location;
-        $tempArray['photo_base64_image'] = base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $office->photo_url)));
+//        $tempArray['photo_base64_image'] = base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $office->photo_url))); // used for windows
+        $tempArray['photo_base64_image'] = base64_encode(File::get(public_path() .'/'. str_replace('\\', '/', $office->photo_url))); // used for mac
         $offices[] = $tempArray;
     }
 
@@ -129,8 +130,10 @@ Route::get('posts', function(Request $request) {
         $tempArray['title'] = $post->title;
         $tempArray['body'] = $post->body;
         $tempArray['branch_name'] = $post->branch->name;
-        $tempArray['post_cover_url'] = public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url);
-        $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url)));
+//        $tempArray['post_cover_url'] = public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url); // used for windows
+        $tempArray['post_cover_url'] = public_path() .'/'. str_replace('\\', '/', $post->postImages->first()->url); // used for mac
+//        $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url))); // used for windows
+        $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'/'. str_replace('\\', '/', $post->postImages->first()->url))); // used for mac
         $tempArray['created_at'] = $post->created_at->timestamp;
         $postsWithBranch[] = $tempArray;
     }
@@ -145,7 +148,8 @@ Route::get('post-images', function() {
 
     // encode image to base64 for easy database manipulation
     foreach ($postImagesRaw as $postImage) {
-        $postImages[] = ['post_id' => $postImage->post_id, 'base64_image' => base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $postImage->url)))];
+//        $postImages[] = ['post_id' => $postImage->post_id, 'base64_image' => base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $postImage->url)))]; // used for windows
+        $postImages[] = ['post_id' => $postImage->post_id, 'base64_image' => base64_encode(File::get(public_path() .'/'. str_replace('\\', '/', $postImage->url)))]; // used for mac
     }
 
     return $postImages;
@@ -162,7 +166,8 @@ Route::get('promos', function() {
             $tempArray["id"] = $promo->id;
             $tempArray["title"] = $promo->title;
             $tempArray["body"] = $promo->body;
-            $tempArray["banner_url"] = public_path() .'\\'. str_replace('/', '\\', $promo->banner_url);
+//            $tempArray["banner_url"] = public_path() .'\\'. str_replace('/', '\\', $promo->banner_url); // used for windows
+            $tempArray["banner_url"] = public_path() .'/'. str_replace('\\', '/', $promo->banner_url); // used for mac
             $tempArray["start_date"] = Carbon::parse($promo->start_date)->timestamp;
             $tempArray["end_date"] = Carbon::parse($promo->end_date)->timestamp;
             $tempArray["branch"] = $promo->branch->name;
