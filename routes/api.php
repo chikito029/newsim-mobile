@@ -131,7 +131,7 @@ Route::get('posts', function(Request $request) {
         $tempArray['body'] = $post->body;
         $tempArray['branch_name'] = $post->branch->name;
 //        $tempArray['post_cover_url'] = public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url); // used for windows
-        $tempArray['post_cover_url'] = public_path() .'/'. str_replace('\\', '/', $post->postImages->first()->url); // used for mac
+        $tempArray['post_cover_url'] = count($post->postImages) < 1 ? null : public_path() .'/'. str_replace('\\', '/', $post->postImages->first()->url); // used for mac
 //        $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'\\'. str_replace('/', '\\', $post->postImages->first()->url))); // used for windows
         $tempArray['post_cover_base64_image'] = count($post->postImages) < 1 ? null : base64_encode(File::get(public_path() .'/'. str_replace('\\', '/', $post->postImages->first()->url))); // used for mac
         $tempArray['created_at'] = $post->created_at->timestamp;
@@ -168,9 +168,11 @@ Route::get('promos', function() {
             $tempArray["body"] = $promo->body;
 //            $tempArray["banner_url"] = public_path() .'\\'. str_replace('/', '\\', $promo->banner_url); // used for windows
             $tempArray["banner_url"] = public_path() .'/'. str_replace('\\', '/', $promo->banner_url); // used for mac
+            $tempArray["banner_base64_image"] = base64_encode(File::get(public_path() .'/'. str_replace('\\', '/', $promo->banner_url)));
             $tempArray["start_date"] = Carbon::parse($promo->start_date)->timestamp;
             $tempArray["end_date"] = Carbon::parse($promo->end_date)->timestamp;
             $tempArray["branch"] = $promo->branch->name;
+            $tempArray["created_at"] = Carbon::parse($promo->created_at)->timestamp;
             $promosWithBranch[] = $tempArray;
         }
 
@@ -230,9 +232,9 @@ Route::get('exchange-rates', function () {
         ['code' => 'ZAR', 'name' => 'South African Rand']
     ];
 
-    foreach($exchange->rates as $rate) {
+    foreach($exchange->rates as $key => $rate) {
         foreach($countryCodes as &$country) {
-            $country['rate'] = $rate;
+            if ($key == $country["code"]) $country["rate"] = $rate;
         }
     }
 
